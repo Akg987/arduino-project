@@ -1,0 +1,25 @@
+#include <SPI.h>
+#include <LoRa.h>
+
+void setup() {
+  Serial.begin(9600);
+
+  // Initialize LoRa module
+  if (!LoRa.begin(433E6)) { // Match the frequency with the sender
+    Serial.println("LoRa init failed!");
+    while (1);
+  }
+  Serial.println("LoRa Receiver initialized.");
+}
+
+void loop() {
+  // Check if there's a new LoRa packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) {
+    String received = "";
+    while (LoRa.available()) {
+      received += (char)LoRa.read();
+    }
+    Serial.println("Received: " + received);
+  }
+}
