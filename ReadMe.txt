@@ -1,2 +1,2 @@
 Only run test 15
-this is need a adruino uno for Receiver and a adruino mini for Sender
+this is need a arduino uno for Receiver and a arduino mini for Sender
